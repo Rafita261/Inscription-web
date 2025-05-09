@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9CsLbqZGRRUGRr16CaNCnesqX3yZCO7r/p7KkGR1tOM=",
+  "Hash": "xvuui8JVThafn8C3h2CW15W/BC1r0zaBf0xakgwpteo=",
   "Source": "Inscription",
   "BasePath": "_content/Inscription",
   "Mode": "Default",
@@ -1443,6 +1443,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/images/logo.webp",
+      "SourceId": "Inscription",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/",
+      "BasePath": "_content/Inscription",
+      "RelativePath": "images/logo#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "e3k8l1m2vx",
+      "Integrity": "Ri/KFkadfnrmas1fyBT9KOL/xnai8wkaUvWenYW9O7s=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/logo.webp"
     },
     {
       "Identity": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/js/site.js",
@@ -3320,6 +3341,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-tOy5kS1PTkjkEg7bjV8bJa0VpoEZJUHnbqYmm1YyhMg="
+        }
+      ]
+    },
+    {
+      "Route": "images/logo.e3k8l1m2vx.webp",
+      "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/images/logo.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82688"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ri/KFkadfnrmas1fyBT9KOL/xnai8wkaUvWenYW9O7s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 09 May 2025 13:42:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "e3k8l1m2vx"
+        },
+        {
+          "Name": "label",
+          "Value": "images/logo.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ri/KFkadfnrmas1fyBT9KOL/xnai8wkaUvWenYW9O7s="
+        }
+      ]
+    },
+    {
+      "Route": "images/logo.webp",
+      "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/images/logo.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82688"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ri/KFkadfnrmas1fyBT9KOL/xnai8wkaUvWenYW9O7s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 09 May 2025 13:42:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ri/KFkadfnrmas1fyBT9KOL/xnai8wkaUvWenYW9O7s="
         }
       ]
     },

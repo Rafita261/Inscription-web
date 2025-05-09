@@ -1,0 +1,26 @@
+@page "/Inscription"
+@model InscriptionModel
+@{
+    ViewData["Title"] = "Inscription";
+    ViewData["Description"] = "Inscription à l'Université de Fianarantsoa";
+    ViewData["Ecole"] = "ENI";
+}
+
+<div class="text-center">
+    <h1>@ViewData["Title"]</h1>
+    <p>@ViewData["Description"]</p>
+    <form method="post">
+        <div class="form-group">
+            <label for="ecole">Choisissez une école :</label>
+            <select id="ecole" name="ecole" class="form-control">
+    using Inscription.Data;
+    using Inscription.Data;
+                <option value="sciences">Faculté des Sciences</option>
+                <option value="lettres">Faculté des Lettres</option>
+                <option value="droit">Faculté de Droit</option>
+                <option value="medecine">Faculté de Médecine</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">S'inscrire</button>
+    </form>
+</div>

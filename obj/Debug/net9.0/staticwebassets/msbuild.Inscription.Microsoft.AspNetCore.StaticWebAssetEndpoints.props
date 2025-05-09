@@ -24,6 +24,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Jtxf9L\u002B5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"5430"},{"Name":"Content-Type","Value":"image/x-icon"},{"Name":"ETag","Value":"\u0022Jtxf9L\u002B5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=\u0022"},{"Name":"Last-Modified","Value":"Fri, 09 May 2025 12:13:47 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Inscription/images/logo.e3k8l1m2vx.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\logo.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"e3k8l1m2vx"},{"Name":"integrity","Value":"sha256-Ri/KFkadfnrmas1fyBT9KOL/xnai8wkaUvWenYW9O7s="},{"Name":"label","Value":"_content/Inscription/images/logo.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"82688"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022Ri/KFkadfnrmas1fyBT9KOL/xnai8wkaUvWenYW9O7s=\u0022"},{"Name":"Last-Modified","Value":"Fri, 09 May 2025 13:42:49 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Inscription/images/logo.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\logo.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Ri/KFkadfnrmas1fyBT9KOL/xnai8wkaUvWenYW9O7s="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"82688"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022Ri/KFkadfnrmas1fyBT9KOL/xnai8wkaUvWenYW9O7s=\u0022"},{"Name":"Last-Modified","Value":"Fri, 09 May 2025 13:42:49 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Inscription/Inscription.26imjwxsko.bundle.scp.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Inscription.26imjwxsko.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
