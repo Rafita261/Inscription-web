@@ -3,24 +3,24 @@
 @{
     ViewData["Title"] = "Inscription";
     ViewData["Description"] = "Inscription à l'Université de Fianarantsoa";
-    ViewData["Ecole"] = "ENI";
 }
 
 <div class="text-center">
     <h1>@ViewData["Title"]</h1>
     <p>@ViewData["Description"]</p>
-    <form method="post">
-        <div class="form-group">
-            <label for="ecole">Choisissez une école :</label>
-            <select id="ecole" name="ecole" class="form-control">
-    using Inscription.Data;
-    using Inscription.Data;
-                <option value="sciences">Faculté des Sciences</option>
-                <option value="lettres">Faculté des Lettres</option>
-                <option value="droit">Faculté de Droit</option>
-                <option value="medecine">Faculté de Médecine</option>
-            </select>
+    <label>Choisissez une école :</label>
+    <form method="post" style="justify-items: center; align-items: center; justify-content: center;">
+        <div class="form-group"
+            style="display: flex; flex-wrap: wrap;justify-items: center; align-items: center; justify-content: center;">
+            @foreach (var ecole in Model.GetEcoles())
+            {
+                var lien = ecole + ".png";
+                <div class="form-check">
+                <a href="/inscrire?ecole=@ecole" class="btn btn-outline-primary m-2" style="display: flex; text-align: center; width: 150px; height: 150px; line-height: 150px; border-radius: 16px; ">
+                    <img src="/images/@lien" alt="@ecole" style="height: 100%; width:100%; border-radius: 8px;">
+                </a>
+            </div>
+            }
         </div>
-        <button type="submit" class="btn btn-primary mt-3">S'inscrire</button>
     </form>
 </div>

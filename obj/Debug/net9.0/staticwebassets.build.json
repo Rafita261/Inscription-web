@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xvuui8JVThafn8C3h2CW15W/BC1r0zaBf0xakgwpteo=",
+  "Hash": "BYbS03yrQ7czfzn0yu/g0pvFuSj5ROCXaQfbtixPNgo=",
   "Source": "Inscription",
   "BasePath": "_content/Inscription",
   "Mode": "Default",
@@ -1443,6 +1443,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/images/EMIT.png",
+      "SourceId": "Inscription",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/",
+      "BasePath": "_content/Inscription",
+      "RelativePath": "images/EMIT#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "io3iiym4k8",
+      "Integrity": "3qKjPmY8Oan/jAAYLWORXUplfOG7AyX66C7y5rQ1tJo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/EMIT.png"
+    },
+    {
+      "Identity": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/images/ENI.png",
+      "SourceId": "Inscription",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/",
+      "BasePath": "_content/Inscription",
+      "RelativePath": "images/ENI#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "s7kamxknin",
+      "Integrity": "KIEiNQLmtlDby1KA8DrQf7UsJDeLtaBY8MYvhllRzOs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/ENI.png"
     },
     {
       "Identity": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/images/logo.webp",
@@ -3341,6 +3383,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-tOy5kS1PTkjkEg7bjV8bJa0VpoEZJUHnbqYmm1YyhMg="
+        }
+      ]
+    },
+    {
+      "Route": "images/EMIT.io3iiym4k8.png",
+      "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/images/EMIT.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23454"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3qKjPmY8Oan/jAAYLWORXUplfOG7AyX66C7y5rQ1tJo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 10 May 2025 04:55:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "io3iiym4k8"
+        },
+        {
+          "Name": "label",
+          "Value": "images/EMIT.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3qKjPmY8Oan/jAAYLWORXUplfOG7AyX66C7y5rQ1tJo="
+        }
+      ]
+    },
+    {
+      "Route": "images/EMIT.png",
+      "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/images/EMIT.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23454"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3qKjPmY8Oan/jAAYLWORXUplfOG7AyX66C7y5rQ1tJo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 10 May 2025 04:55:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3qKjPmY8Oan/jAAYLWORXUplfOG7AyX66C7y5rQ1tJo="
+        }
+      ]
+    },
+    {
+      "Route": "images/ENI.png",
+      "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/images/ENI.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5247"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KIEiNQLmtlDby1KA8DrQf7UsJDeLtaBY8MYvhllRzOs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 10 May 2025 12:05:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-KIEiNQLmtlDby1KA8DrQf7UsJDeLtaBY8MYvhllRzOs="
+        }
+      ]
+    },
+    {
+      "Route": "images/ENI.s7kamxknin.png",
+      "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/images/ENI.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5247"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KIEiNQLmtlDby1KA8DrQf7UsJDeLtaBY8MYvhllRzOs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 10 May 2025 12:05:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s7kamxknin"
+        },
+        {
+          "Name": "label",
+          "Value": "images/ENI.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-KIEiNQLmtlDby1KA8DrQf7UsJDeLtaBY8MYvhllRzOs="
         }
       ]
     },

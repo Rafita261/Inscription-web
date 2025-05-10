@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/images/EMIT.png",
+      "PackagePath": "staticwebassets/images/EMIT.png"
+    },
+    {
+      "Id": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/images/ENI.png",
+      "PackagePath": "staticwebassets/images/ENI.png"
+    },
+    {
       "Id": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/images/logo.webp",
       "PackagePath": "staticwebassets/images/logo.webp"
     },
