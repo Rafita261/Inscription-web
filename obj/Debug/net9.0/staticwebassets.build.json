@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BYbS03yrQ7czfzn0yu/g0pvFuSj5ROCXaQfbtixPNgo=",
+  "Hash": "qAm1PYr4/kdMIN1OhAuWWb9fMQSXt636pPmCgj8UNUI=",
   "Source": "Inscription",
   "BasePath": "_content/Inscription",
   "Mode": "Default",
@@ -710,12 +710,12 @@
       "OriginalItemSpec": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/lib/jquery-validation/dist/additional-methods.min.js"
     },
     {
-      "Identity": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/gn7lzooyy8-b9sayid5wm.gz",
+      "Identity": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/gn7lzooyy8-sqjot6v8sk.gz",
       "SourceId": "Inscription",
       "SourceType": "Discovered",
       "ContentRoot": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/",
       "BasePath": "_content/Inscription",
-      "RelativePath": "css/site#[.{fingerprint=b9sayid5wm}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=sqjot6v8sk}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -724,8 +724,8 @@
       "RelatedAsset": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/css/site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "pi0kzaqg9p",
-      "Integrity": "X7WdvJWe5+793Q+I1aPv6O/n2+XRWJsByQEd8dEKmGs=",
+      "Fingerprint": "bs7l5dj22l",
+      "Integrity": "q0M6R2MVPBhSywyIEVJZ8ZjGqg27gFuaqL2NyDTvP84=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/css/site.css"
@@ -1417,8 +1417,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "b9sayid5wm",
-      "Integrity": "j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=",
+      "Fingerprint": "sqjot6v8sk",
+      "Integrity": "DIG2kCh/c+X5qf53fU13sbSD73EajcxIDZgLo1tWphA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
@@ -2791,13 +2791,13 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/site.b9sayid5wm.css",
-      "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/gn7lzooyy8-b9sayid5wm.gz",
+      "Route": "css/site.css",
+      "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/gn7lzooyy8-sqjot6v8sk.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.003134796238"
+          "Quality": "0.001941747573"
         }
       ],
       "ResponseHeaders": [
@@ -2807,19 +2807,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "318"
+          "Value": "514"
         },
         {
           "Name": "ETag",
-          "Value": "\"X7WdvJWe5+793Q+I1aPv6O/n2+XRWJsByQEd8dEKmGs=\""
+          "Value": "\"q0M6R2MVPBhSywyIEVJZ8ZjGqg27gFuaqL2NyDTvP84=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 09 May 2025 12:13:47 GMT"
+          "Value": "Sun, 11 May 2025 11:08:44 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -2835,26 +2835,18 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
+          "Value": "W/\"DIG2kCh/c+X5qf53fU13sbSD73EajcxIDZgLo1tWphA=\""
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "b9sayid5wm"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
+          "Value": "sha256-DIG2kCh/c+X5qf53fU13sbSD73EajcxIDZgLo1tWphA="
         }
       ]
     },
     {
-      "Route": "css/site.b9sayid5wm.css",
+      "Route": "css/site.css",
       "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/css/site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -2864,7 +2856,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "667"
+          "Value": "1188"
         },
         {
           "Name": "Content-Type",
@@ -2872,11 +2864,156 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
+          "Value": "\"DIG2kCh/c+X5qf53fU13sbSD73EajcxIDZgLo1tWphA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 09 May 2025 12:13:47 GMT"
+          "Value": "Sun, 11 May 2025 11:08:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-DIG2kCh/c+X5qf53fU13sbSD73EajcxIDZgLo1tWphA="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.css.gz",
+      "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/gn7lzooyy8-sqjot6v8sk.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "514"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"q0M6R2MVPBhSywyIEVJZ8ZjGqg27gFuaqL2NyDTvP84=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 11 May 2025 11:08:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-q0M6R2MVPBhSywyIEVJZ8ZjGqg27gFuaqL2NyDTvP84="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.sqjot6v8sk.css",
+      "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/gn7lzooyy8-sqjot6v8sk.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001941747573"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "514"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"q0M6R2MVPBhSywyIEVJZ8ZjGqg27gFuaqL2NyDTvP84=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 11 May 2025 11:08:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"DIG2kCh/c+X5qf53fU13sbSD73EajcxIDZgLo1tWphA=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sqjot6v8sk"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-DIG2kCh/c+X5qf53fU13sbSD73EajcxIDZgLo1tWphA="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.sqjot6v8sk.css",
+      "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/css/site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1188"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DIG2kCh/c+X5qf53fU13sbSD73EajcxIDZgLo1tWphA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 11 May 2025 11:08:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2886,7 +3023,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "b9sayid5wm"
+          "Value": "sqjot6v8sk"
         },
         {
           "Name": "label",
@@ -2894,13 +3031,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
+          "Value": "sha256-DIG2kCh/c+X5qf53fU13sbSD73EajcxIDZgLo1tWphA="
         }
       ]
     },
     {
-      "Route": "css/site.b9sayid5wm.css.gz",
-      "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/gn7lzooyy8-b9sayid5wm.gz",
+      "Route": "css/site.sqjot6v8sk.css.gz",
+      "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/gn7lzooyy8-sqjot6v8sk.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2909,7 +3046,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "318"
+          "Value": "514"
         },
         {
           "Name": "Content-Type",
@@ -2917,11 +3054,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"X7WdvJWe5+793Q+I1aPv6O/n2+XRWJsByQEd8dEKmGs=\""
+          "Value": "\"q0M6R2MVPBhSywyIEVJZ8ZjGqg27gFuaqL2NyDTvP84=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 09 May 2025 12:13:47 GMT"
+          "Value": "Sun, 11 May 2025 11:08:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2939,7 +3076,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "b9sayid5wm"
+          "Value": "sqjot6v8sk"
         },
         {
           "Name": "label",
@@ -2947,144 +3084,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-X7WdvJWe5+793Q+I1aPv6O/n2+XRWJsByQEd8dEKmGs="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css",
-      "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/gn7lzooyy8-b9sayid5wm.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.003134796238"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "318"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"X7WdvJWe5+793Q+I1aPv6O/n2+XRWJsByQEd8dEKmGs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 09 May 2025 12:13:47 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css",
-      "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/wwwroot/css/site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "667"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 09 May 2025 12:13:47 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css.gz",
-      "AssetFile": "/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/gn7lzooyy8-b9sayid5wm.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "318"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"X7WdvJWe5+793Q+I1aPv6O/n2+XRWJsByQEd8dEKmGs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 09 May 2025 12:13:47 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-X7WdvJWe5+793Q+I1aPv6O/n2+XRWJsByQEd8dEKmGs="
+          "Value": "sha256-q0M6R2MVPBhSywyIEVJZ8ZjGqg27gFuaqL2NyDTvP84="
         }
       ]
     },

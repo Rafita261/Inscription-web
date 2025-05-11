@@ -2,13 +2,15 @@
 @model InscrireModel
 
 @{
-    var ecole = Request.Query["ecole"].ToString();
-    var formulaire = Model.GetFormulaires(ecole,Ecole.Get_Id(ecole));
+    var ecole = Request.Query["ecole"].ToString()!="" ? Request.Query["ecole"].ToString() : "ENI";
+    var formulaire = Formulaire.GetForms(Ecole.Get_Id(ecole));
     var parcours = new Ecole(Ecole.Get_Id(ecole),ecole).GetParcours();
-    Console.WriteLine(formulaire[0].Count);
+    ViewData["Title"] = ecole;
+    var lien = ecole + ".png";
 }
-<p>Formulaire d'inscription de @ecole</p>
-<form action="" style="justify-content: center;">
+<img src="~/images/@lien" alt="@ecole" style="height: 80px; margin-left: 10px;" />
+<h2>Formulaire d'inscription de @ecole</h2>
+<form method="post" style="justify-content: center;">
     <label for="">Nom</label>
     <input type="text" placeholder="Nom de l'étudiant"> <br/><br/>
     <label for="">Prénoms</label>
@@ -21,9 +23,9 @@
             <option value="@parcours[i].id_parcours">@parcours[i].nom_parcours</option>
         }
     </select> <br/><br/>
-    @for(int i = 0 ; i < formulaire[0].Count ; i++){
-        string attribut = formulaire[1][i];
-        string type = formulaire[0][i];
+    @for(int i = 0 ; i < formulaire.Count ; i++){
+        string attribut = formulaire[i].attribut;
+        string type = formulaire[i].type;
         Console.WriteLine(attribut,type);
         <label for=""> @attribut </label>
         <input type="@type" placeholder="@attribut"> <br /><br />

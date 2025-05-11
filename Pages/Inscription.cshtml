@@ -9,18 +9,17 @@
     <h1>@ViewData["Title"]</h1>
     <p>@ViewData["Description"]</p>
     <label>Choisissez une école :</label>
-    <form method="post" style="justify-items: center; align-items: center; justify-content: center;">
-        <div class="form-group"
-            style="display: flex; flex-wrap: wrap;justify-items: center; align-items: center; justify-content: center;">
+    <div style="justify-items: center; align-items: center; justify-content: center;">
+        <div class="form-group">
             @foreach (var ecole in Model.GetEcoles())
             {
                 var lien = ecole.nom_ecole + ".png";
                 <div class="form-check">
-                <a href="/inscrire?ecole=@ecole.nom_ecole" class="btn btn-outline-primary m-2" style="display: flex; text-align: center; width: 150px; height: 150px; line-height: 150px; border-radius: 16px; ">
+                <a href="/inscrire?ecole=@ecole.nom_ecole" class="btn btn-outline-primary m-2" style="display: flex; text-align: center; width: 200px; height: 200px; line-height: 150px; border-radius: 16px; ">
                     <img src="/images/@lien" alt="@ecole.nom_ecole" style="height: 100%; width:100%; border-radius: 8px;">
                 </a>
             </div>
             }
         </div>
-    </form>
+    </div>
 </div>

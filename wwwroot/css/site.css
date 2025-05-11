@@ -29,3 +29,35 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+form {
+  width: 40%;
+  margin-left: 30%;
+  input, select {
+    width: 100%;
+    height: 50px;
+    padding-left: 20px;
+    border-radius: 8px;
+  }
+}
+
+input[type="submit"]{
+  background-color: #258cfb;
+  color: #fff;
+}
+h2,p{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group{
+  display: flex;
+  flex-direction: row !important;
+  flex-wrap: wrap;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  margin-left: 15%;
+  margin-bottom: 10px;
+}

@@ -20,7 +20,6 @@
 /home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/scopedcss/Pages/Shared/_Layout.cshtml.rz.scp.css
 /home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/scopedcss/bundle/Inscription.styles.css
 /home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/scopedcss/projectbundle/Inscription.bundle.scp.css
-/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/gn7lzooyy8-b9sayid5wm.gz
 /home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/jwsgzd3szf-61n19gt1b8.gz
 /home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/zulb89tmu8-xtxxf3hu2r.gz
 /home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/led1vb7km6-bqjiyaj88i.gz
@@ -99,3 +98,4 @@
 /home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/Inscription.pdb
 /home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/Inscription.genruntimeconfig.cache
 /home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/ref/Inscription.dll
+/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/gn7lzooyy8-sqjot6v8sk.gz
