@@ -1,0 +1,32 @@
+@page "/inscrire"
+@model InscrireModel
+
+@{
+    var ecole = Request.Query["ecole"].ToString();
+    var formulaire = Model.GetFormulaires(ecole,Ecole.Get_Id(ecole));
+    var parcours = new Ecole(Ecole.Get_Id(ecole),ecole).GetParcours();
+    Console.WriteLine(formulaire[0].Count);
+}
+<p>Formulaire d'inscription de @ecole</p>
+<form action="" style="justify-content: center;">
+    <label for="">Nom</label>
+    <input type="text" placeholder="Nom de l'étudiant"> <br/><br/>
+    <label for="">Prénoms</label>
+    <input type="text" placeholder="Prénoms de l'étudiant"> <br/><br/>
+    <label for="">Email</label>
+    <input type="email" placeholder="Email de l'étudiant"> <br/><br/>
+    <label for="">Parcours</label>
+    <select name="" id="">
+        @for (int i = 0; i < parcours.Count; i++){
+            <option value="@parcours[i].id_parcours">@parcours[i].nom_parcours</option>
+        }
+    </select> <br/><br/>
+    @for(int i = 0 ; i < formulaire[0].Count ; i++){
+        string attribut = formulaire[1][i];
+        string type = formulaire[0][i];
+        Console.WriteLine(attribut,type);
+        <label for=""> @attribut </label>
+        <input type="@type" placeholder="@attribut"> <br /><br />
+    }
+    <input type="submit" value="S'inscrire" />
+</form>

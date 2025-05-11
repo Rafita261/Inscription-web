@@ -14,10 +14,10 @@
             style="display: flex; flex-wrap: wrap;justify-items: center; align-items: center; justify-content: center;">
             @foreach (var ecole in Model.GetEcoles())
             {
-                var lien = ecole + ".png";
+                var lien = ecole.nom_ecole + ".png";
                 <div class="form-check">
-                <a href="/inscrire?ecole=@ecole" class="btn btn-outline-primary m-2" style="display: flex; text-align: center; width: 150px; height: 150px; line-height: 150px; border-radius: 16px; ">
-                    <img src="/images/@lien" alt="@ecole" style="height: 100%; width:100%; border-radius: 8px;">
+                <a href="/inscrire?ecole=@ecole.nom_ecole" class="btn btn-outline-primary m-2" style="display: flex; text-align: center; width: 150px; height: 150px; line-height: 150px; border-radius: 16px; ">
+                    <img src="/images/@lien" alt="@ecole.nom_ecole" style="height: 100%; width:100%; border-radius: 8px;">
                 </a>
             </div>
             }

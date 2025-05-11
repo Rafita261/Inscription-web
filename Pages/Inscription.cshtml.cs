@@ -14,29 +14,9 @@ public class InscriptionModel : PageModel
         _logger = logger;
     }
 
-    public List<string> GetEcoles()
+    public List<Ecole> GetEcoles()
     {
-        List<string> ecoles = new List<string>();
-        const string connectionString = "Server=localhost;User ID=chris;Password=Chriskely@123;Database=Inscription";
-
-        try
-        {
-            using var connection = new MySqlConnection(connectionString);
-            connection.Open();
-
-            using var command = new MySqlCommand("SELECT * FROM ECOLE;", connection);
-            using var reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                ecoles.Add(reader.GetString(1));
-            }
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Erreur lors de la récupération des écoles.");
-        }
-        return ecoles;
+        return Ecole.get_all();
     }
 
     public void OnGet()
