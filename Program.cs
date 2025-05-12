@@ -1,4 +1,3 @@
-using Inscription.Data;
 using MySqlConnector;
 
 var builder = WebApplication.CreateBuilder(args);
