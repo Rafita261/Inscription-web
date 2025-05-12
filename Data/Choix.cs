@@ -1,6 +1,6 @@
 using MySqlConnector;
 
-public class Choix 
+public class Choix
 {
     public int id_choix;
     public string valeur;
@@ -8,22 +8,22 @@ public class Choix
     {
         this.id_choix = id_choix;
         this.valeur = valeur;
-    }   
-    public const string connectionString = "Server=localhost;User ID=chris;Password=Chriskely@123;Database=Inscription";
+    }
+
     public static List<Choix> GetChoix(string id_attribut)
     {
         List<Choix> choixList = new List<Choix>();
         try
         {
-            using var connection = new MySqlConnection(connectionString);
+            using var connection = new MySqlConnection(Connexion.connectionString);
             connection.Open();
 
-            using var command = new MySqlCommand("SELECT * FROM CHOIX WHERE ID_ATTRIBUT = "+id_attribut +";", connection);
+            using var command = new MySqlCommand("SELECT * FROM CHOIX WHERE ID_ATTRIBUT = " + id_attribut + ";", connection);
             using var reader = command.ExecuteReader();
 
             while (reader.Read())
             {
-                choixList.Add(new Choix(reader.GetInt16("ID_CHOIX"),reader.GetString("VALEUR")));
+                choixList.Add(new Choix(reader.GetInt16("ID_CHOIX"), reader.GetString("VALEUR")));
             }
         }
         catch (Exception ex)

@@ -3,7 +3,7 @@ using MySqlConnector;
 public class Ecole
 {
     public string id_ecole, nom_ecole;
-    public const string connectionString = "Server=localhost;User ID=chris;Password=Chriskely@123;Database=Inscription";
+
     public Ecole(string id, string nom)
     {
         id_ecole = id;
@@ -15,10 +15,10 @@ public class Ecole
 
         try
         {
-            using var connection = new MySqlConnection(connectionString);
+            using var connection = new MySqlConnection(Connexion.connectionString);
             connection.Open();
 
-            using var command = new MySqlCommand("SELECT ID_ECOLE FROM ECOLE WHERE NOM_ECOLE = '"+NomEcole+"';", connection);
+            using var command = new MySqlCommand("SELECT ID_ECOLE FROM ECOLE WHERE NOM_ECOLE = '" + NomEcole + "';", connection);
             using var reader = command.ExecuteReader();
 
             reader.Read();
@@ -32,10 +32,10 @@ public class Ecole
 
     public List<Parcours> GetParcours()
     {
-        List<Parcours> parcours = new List<Parcours>() ;
+        List<Parcours> parcours = new List<Parcours>();
         try
         {
-            using var connection = new MySqlConnection(connectionString);
+            using var connection = new MySqlConnection(Connexion.connectionString);
             connection.Open();
 
             using var command = new MySqlCommand("SELECT CODE_PARCOURS, NOM_PARCOURS FROM PARCOURS WHERE ID_ECOLE = '" + id_ecole + "';", connection);
@@ -43,7 +43,7 @@ public class Ecole
 
             while (reader.Read())
             {
-                parcours.Add(new Parcours(reader.GetString(0),reader.GetString(1)));
+                parcours.Add(new Parcours(reader.GetString(0), reader.GetString(1)));
             }
 
         }
@@ -52,14 +52,14 @@ public class Ecole
             throw new Exception("Erreur lors de la récupération de l'ID de l'école : " + ex);
         }
         return parcours;
-    }  
+    }
     public static List<Ecole> get_all()
     {
         List<Ecole> ecoles = new List<Ecole>();
 
         try
         {
-            using var connection = new MySqlConnection(connectionString);
+            using var connection = new MySqlConnection(Connexion.connectionString);
             connection.Open();
 
             using var command = new MySqlCommand("SELECT * FROM ECOLE;", connection);
