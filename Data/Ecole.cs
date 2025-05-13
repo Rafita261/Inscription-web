@@ -18,7 +18,7 @@ public class Ecole
             using var connection = new MySqlConnection(Connexion.connectionString);
             connection.Open();
 
-            using var command = new MySqlCommand("SELECT ID_ECOLE FROM ECOLE WHERE NOM_ECOLE = '" + NomEcole + "';", connection);
+            using var command = new MySqlCommand("SELECT CodeEcole FROM Ecole WHERE NomEcole = '" + NomEcole + "';", connection);
             using var reader = command.ExecuteReader();
 
             reader.Read();
@@ -38,7 +38,7 @@ public class Ecole
             using var connection = new MySqlConnection(Connexion.connectionString);
             connection.Open();
 
-            using var command = new MySqlCommand("SELECT CODE_PARCOURS, NOM_PARCOURS FROM PARCOURS WHERE ID_ECOLE = '" + id_ecole + "';", connection);
+            using var command = new MySqlCommand("SELECT CodeParcours, NomParcours FROM Parcours WHERE CodeEcole = '" + id_ecole + "';", connection);
             using var reader = command.ExecuteReader();
 
             while (reader.Read())
@@ -62,12 +62,12 @@ public class Ecole
             using var connection = new MySqlConnection(Connexion.connectionString);
             connection.Open();
 
-            using var command = new MySqlCommand("SELECT * FROM ECOLE;", connection);
+            using var command = new MySqlCommand("SELECT * FROM Ecole;", connection);
             using var reader = command.ExecuteReader();
 
             while (reader.Read())
             {
-                Ecole ecole = new Ecole(reader.GetString("ID_ECOLE"), reader.GetString("NOM_ECOLE"));
+                Ecole ecole = new Ecole(reader.GetString("CodeEcole"), reader.GetString("NomEcole"));
                 ecoles.Add(ecole);
             }
         }

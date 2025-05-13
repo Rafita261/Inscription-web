@@ -17,12 +17,12 @@ public class Formulaire
             using var connection = new MySqlConnection(Connexion.connectionString);
             connection.Open();
 
-            using var command = new MySqlCommand("SELECT * FROM ATTRIBUT_FORMULAIRE WHERE ID_ECOLE = '" + id_ecole + "' AND YEAR(ANNEE)=YEAR(CURDATE());", connection);
+            using var command = new MySqlCommand("SELECT * FROM Attribut_Formulaire WHERE CodeEcole = '" + id_ecole + "' AND YEAR(Annee)=YEAR(CURDATE());", connection);
             using var reader = command.ExecuteReader();
 
             while (reader.Read())
             {
-                formulaires.Add(new Formulaire(reader.GetString("ID_ATTRIBUT"), reader.GetString("NOM_ATTRIBUT"), reader.GetString("TYPE_ATTRIBUT")));
+                formulaires.Add(new Formulaire(reader.GetString("NumAttribut"), reader.GetString("NomAttribut"), reader.GetString("TypeAttribut")));
             }
         }
         catch (Exception ex)

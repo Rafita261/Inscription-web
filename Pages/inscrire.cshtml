@@ -2,33 +2,221 @@
 @model InscrireModel
 
 @{
-    var ecole = Request.Query["ecole"].ToString()!="" ? Request.Query["ecole"].ToString() : "ENI";
-    var formulaire = Formulaire.GetForms(Ecole.Get_Id(ecole));
-    var parcours = new Ecole(Ecole.Get_Id(ecole),ecole).GetParcours();
+    var ecole = Request.Query["ecole"].ToString() != "" ? Request.Query["ecole"].ToString() : "ENI";
     ViewData["Title"] = ecole;
     var lien = ecole + ".png";
-}
-<img src="~/images/@lien" alt="@ecole" style="height: 80px; margin-left: 10px;" />
-<h2>Formulaire d'inscription de @ecole</h2>
-<form method="post" style="justify-content: center;">
-    <label for="">Nom</label>
-    <input type="text" placeholder="Nom de l'étudiant"> <br/><br/>
-    <label for="">Prénoms</label>
-    <input type="text" placeholder="Prénoms de l'étudiant"> <br/><br/>
-    <label for="">Email</label>
-    <input type="email" placeholder="Email de l'étudiant"> <br/><br/>
-    <label for="">Parcours</label>
-    <select name="" id="">
-        @for (int i = 0; i < parcours.Count; i++){
-            <option value="@parcours[i].id_parcours">@parcours[i].nom_parcours</option>
-        }
-    </select> <br/><br/>
-    @for(int i = 0 ; i < formulaire.Count ; i++){
-        string attribut = formulaire[i].attribut;
-        string type = formulaire[i].type;
-        Console.WriteLine(attribut,type);
-        <label for=""> @attribut </label>
-        <input type="@type" placeholder="@attribut"> <br /><br />
+    var formulaire = new List<Formulaire>();
+    var parcours = new List<Parcours>();
+    var disabled = false;
+    try
+    {
+        formulaire = Formulaire.GetForms(Ecole.Get_Id(ecole));
+        parcours = new Ecole(Ecole.Get_Id(ecole), ecole).GetParcours();
+        disabled = true;
     }
-    <input type="submit" value="S'inscrire" />
-</form>
+    catch (Exception E)
+    {
+        Console.WriteLine(E);
+    }
+}
+
+<style>
+    .page {
+        display: none;
+    }
+
+    .page.active {
+        display: block;
+    }
+
+    .progress-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    .checkbox-fake {
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+        border: 2px solid #007bff;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        font-weight: bold;
+        color: white;
+        transition: background-color 0.3s ease;
+    }
+
+    .checkbox-fake.checked {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+</style>
+
+<div style="display: flex;flex-direction: row;">
+    <nav style="width: 15%; padding: 10px;">
+        <img src="~/images/@lien" alt="@ecole" style="height: 80px;" /><br /><br />
+        @for (int i = 0; i < (int)(formulaire.Count + 4) / 3; i++)
+        {
+            <div class="progress-item" onclick="GoTo('page@((i + 1))')" id="progress@(i + 1)">
+                <div class="checkbox-fake" id="checkbox@(i + 1)">✓</div>
+                Formulaire @(i + 1)
+            </div>
+        }
+    </nav>
+
+    <section style="width: 85%; padding: 20px;">
+        <h2>Formulaire d'inscription de @ecole</h2>
+        <form method="post" id="formulaireInscription">
+
+            <!-- Page 1 -->
+            <div class="page" id="page1">
+                <label>Nom</label>
+                <input type="text" name="nom" placeholder="Nom de l'étudiant" required> <br /><br />
+                <label>Prénoms</label>
+                <input type="text" name="prenom" placeholder="Prénoms de l'étudiant" required> <br /><br />
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Email de l'étudiant" required> <br /><br />
+                <label>Parcours</label>
+                <select name="parcours" required>
+                    @foreach (var p in parcours)
+                    {
+                        <option value="@p.id_parcours">@p.nom_parcours</option>
+                    }
+                </select> <br /><br />
+            </div>
+
+            <!-- Pages dynamiques -->
+            @for (int i = 0; i <= (int)(formulaire.Count) / 3; i++)
+            {
+                var pageId = "page" + (2 + i).ToString();
+                <div class="page" id="@pageId" style="z-index:@(-i); background-color: #fff;">
+                    @for (int k = 0; k < 3; k++)
+                    {
+                        int index = i * 3 + k;
+                        if (index >= formulaire.Count) break;
+                        var f = formulaire[index];
+                        string attribut = f.attribut;
+                        string type = f.type;
+
+                        if (type == "radio" || type == "checkbox")
+                        {
+                            var choix = Choix.GetChoix(f.id_attribut);
+                            <label>@attribut</label>
+                
+                            <br />
+                            @for (int j = 0; j < choix.Count; j++)
+                            {
+                                <input style="width:18px; height:18px;" type="@type" name="@attribut" value="@choix[j].id_choix"
+                                    required />
+                                @choix[j].valeur
+                    
+                                <br />
+                            }
+                            <br />
+                        }
+                        else
+                        {
+                            <label>@attribut</label>
+                            <input type="@type" name="@attribut" placeholder="@attribut" required> <br />
+                
+                            <br />
+                        }
+                    }
+                </div>
+            }
+
+            <div class="nav-buttons">
+                <button type="button" onclick="prevPage()" class="btn btn-secondary">Précédent</button>
+                <button type="button" onclick="nextPage()" class="btn btn-primary">Suivant</button>
+            </div>
+
+            <input type="submit" value="S'inscrire" id="submitBtn" disabled class="btn btn-success text-white mt-4"
+                style="margin-top: 30px;" />
+        </form>
+    </section>
+</div>
+
+<script>
+    let currentPageIndex = 0;
+    let pages = [];
+
+    document.addEventListener("DOMContentLoaded", function () {
+        pages = Array.from(document.querySelectorAll(".page"));
+        if (pages.length > 0) {
+            pages[0].classList.add("active");
+        }
+
+        document.querySelectorAll("form input, form select, form textarea").forEach(el => {
+            el.addEventListener("input", checkAllPages);
+            el.addEventListener("change", checkAllPages);
+        });
+
+        checkAllPages();
+    });
+
+    function GoTo(pageId) {
+        pages.forEach(p => p.classList.remove('active'));
+        let target = document.getElementById(pageId);
+        if (target) {
+            target.classList.add('active');
+            currentPageIndex = pages.indexOf(target);
+        }
+    }
+
+    function nextPage() {
+        if (currentPageIndex < pages.length - 1) {
+            pages[currentPageIndex].classList.remove('active');
+            currentPageIndex++;
+            pages[currentPageIndex].classList.add('active');
+        }
+    }
+
+    function prevPage() {
+        if (currentPageIndex > 0) {
+            pages[currentPageIndex].classList.remove('active');
+            currentPageIndex--;
+            pages[currentPageIndex].classList.add('active');
+        }
+    }
+
+    function checkAllPages() {
+        let allPagesComplete = true;
+        pages.forEach((page, index) => {
+            let inputs = page.querySelectorAll("input[required], select[required], textarea[required]");
+            let allFilled = true;
+
+            inputs.forEach(input => {
+                if (input.type === "radio" || input.type === "checkbox") {
+                    let groupName = input.name;
+                    let groupInputs = page.querySelectorAll(`input[name='${groupName}']`);
+                    let oneChecked = Array.from(groupInputs).some(i => i.checked);
+                    if (!oneChecked) allFilled = false;
+                } else {
+                    if (!input.value || input.value.trim() === "") {
+                        allFilled = false;
+                    }
+                }
+            });
+
+            let checkbox = document.getElementById("checkbox" + (index + 1));
+            if (checkbox) {
+                checkbox.classList.toggle("checked", allFilled);
+            }
+
+            if (!allFilled) allPagesComplete = false;
+        });
+
+        document.getElementById("submitBtn").disabled = !allPagesComplete;
+    }
+</script>

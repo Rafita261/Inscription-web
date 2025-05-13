@@ -98,4 +98,4 @@
 /home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/Inscription.pdb
 /home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/Inscription.genruntimeconfig.cache
 /home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/ref/Inscription.dll
-/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/gn7lzooyy8-sqjot6v8sk.gz
+/home/christalin/Bureau/L2-Projet-TD-TP/C#/Inscription-web/obj/Debug/net9.0/compressed/gn7lzooyy8-lnc4k42x8k.gz

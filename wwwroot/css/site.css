@@ -41,7 +41,7 @@ form {
   }
 }
 
-input[type="submit"]{
+input[type="submit"], button{
   background-color: #258cfb;
   color: #fff;
 }
@@ -60,4 +60,12 @@ h2,p{
   width: 70%;
   margin-left: 15%;
   margin-bottom: 10px;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
 }
