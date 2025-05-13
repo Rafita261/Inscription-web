@@ -1,6 +1,5 @@
 @page "/inscrire"
 @model InscrireModel
-
 @{
     var ecole = Request.Query["ecole"].ToString() != "" ? Request.Query["ecole"].ToString() : "ENI";
     ViewData["Title"] = ecole;
@@ -8,15 +7,16 @@
     var formulaire = new List<Formulaire>();
     var parcours = new List<Parcours>();
     var disabled = false;
+
     try
     {
         formulaire = Formulaire.GetForms(Ecole.Get_Id(ecole));
         parcours = new Ecole(Ecole.Get_Id(ecole), ecole).GetParcours();
-        disabled = true;
     }
     catch (Exception E)
     {
         Console.WriteLine(E);
+        disabled = true;
     }
 }
 
@@ -46,9 +46,7 @@
         justify-content: center;
         align-items: center;
         background-color: white;
-        font-weight: bold;
         color: white;
-        transition: background-color 0.3s ease;
     }
 
     .checkbox-fake.checked {
@@ -78,26 +76,30 @@
     <section style="width: 85%; padding: 20px;">
         <h2>Formulaire d'inscription de @ecole</h2>
         <form method="post" id="formulaireInscription">
-
             <!-- Page 1 -->
             <div class="page" id="page1">
                 <label>Nom</label>
-                <input type="text" name="nom" placeholder="Nom de l'étudiant" required> <br /><br />
+                <input type="text" name="nom" required placeholder="Nom de l'étudiant" /><br /><br />
                 <label>Prénoms</label>
-                <input type="text" name="prenom" placeholder="Prénoms de l'étudiant" required> <br /><br />
+                <input type="text" name="prenom" required placeholder="Prénoms de l'étudiant" /><br /><br />
                 <label>Email</label>
-                <input type="email" name="email" placeholder="Email de l'étudiant" required> <br /><br />
+                <input type="email" name="email" required placeholder="Email" /><br /><br />
                 <label>Parcours</label>
-                <select name="parcours" required>
+                <select name="parcours" id="parcours" required>
+                    <option disabled selected value="">Choisir un parcours</option>
                     @foreach (var p in parcours)
                     {
                         <option value="@p.id_parcours">@p.nom_parcours</option>
                     }
-                </select> <br /><br />
+                </select><br /><br />
+                <label>Niveau</label>
+                <select name="niveau" id="niveau" required>
+                    <option disabled selected value="">Choisir un niveau</option>
+                </select><br /><br />
             </div>
 
             <!-- Pages dynamiques -->
-            @for (int i = 0; i <= (int)(formulaire.Count) / 3; i++)
+            @for (int i = 0; i < (int)(formulaire.Count) / 3; i++)
             {
                 var pageId = "page" + (2 + i).ToString();
                 <div class="page" id="@pageId" style="z-index:@(-i); background-color: #fff;">
@@ -115,12 +117,11 @@
                             <label>@attribut</label>
                 
                             <br />
-                            @for (int j = 0; j < choix.Count; j++)
+                            @foreach (var ch in choix)
                             {
-                                <input style="width:18px; height:18px;" type="@type" name="@attribut" value="@choix[j].id_choix"
-                                    required />
-                                @choix[j].valeur
-                    
+                                <input type="@type" name="@attribut" value="@ch.id_choix" style="width:18px; height:18px;" required />
+                                @ch.valeur
+                
                                 <br />
                             }
                             <br />
@@ -128,8 +129,9 @@
                         else
                         {
                             <label>@attribut</label>
-                            <input type="@type" name="@attribut" placeholder="@attribut" required> <br />
-                
+                            <input type="@type" name="@attribut" placeholder="@attribut" required />
+                            <br />
+
                             <br />
                         }
                     }
@@ -141,8 +143,7 @@
                 <button type="button" onclick="nextPage()" class="btn btn-primary">Suivant</button>
             </div>
 
-            <input type="submit" value="S'inscrire" id="submitBtn" disabled class="btn btn-success text-white mt-4"
-                style="margin-top: 30px;" />
+            <input type="submit" value="S'inscrire" id="submitBtn" disabled class="btn btn-success mt-4" />
         </form>
     </section>
 </div>
@@ -153,66 +154,78 @@
 
     document.addEventListener("DOMContentLoaded", function () {
         pages = Array.from(document.querySelectorAll(".page"));
-        if (pages.length > 0) {
-            pages[0].classList.add("active");
-        }
+        if (pages.length > 0) pages[0].classList.add("active");
 
         document.querySelectorAll("form input, form select, form textarea").forEach(el => {
             el.addEventListener("input", checkAllPages);
             el.addEventListener("change", checkAllPages);
         });
 
+        document.getElementById("parcours").addEventListener("change", function () {
+            const selectedId = this.value;
+            fetch(`/inscrire?handler=Niveaux&idParcours=${selectedId}`)
+                .then(response => response.json())
+                .then(niveaux => {
+                    const niveauSelect = document.getElementById("niveau");
+                    niveauSelect.innerHTML = '<option disabled selected value="">Choisir un niveau</option>';
+                    niveaux.forEach(n => {
+                        console.log(n);
+                        const option = document.createElement("option");
+                        option.value = n;
+                        option.textContent = n;
+                        niveauSelect.appendChild(option);
+                    });
+                    checkAllPages();
+                });
+        });
+
         checkAllPages();
     });
 
     function GoTo(pageId) {
-        pages.forEach(p => p.classList.remove('active'));
-        let target = document.getElementById(pageId);
+        pages.forEach(p => p.classList.remove("active"));
+        const target = document.getElementById(pageId);
         if (target) {
-            target.classList.add('active');
+            target.classList.add("active");
             currentPageIndex = pages.indexOf(target);
         }
     }
 
     function nextPage() {
         if (currentPageIndex < pages.length - 1) {
-            pages[currentPageIndex].classList.remove('active');
+            pages[currentPageIndex].classList.remove("active");
             currentPageIndex++;
-            pages[currentPageIndex].classList.add('active');
+            pages[currentPageIndex].classList.add("active");
         }
     }
 
     function prevPage() {
         if (currentPageIndex > 0) {
-            pages[currentPageIndex].classList.remove('active');
+            pages[currentPageIndex].classList.remove("active");
             currentPageIndex--;
-            pages[currentPageIndex].classList.add('active');
+            pages[currentPageIndex].classList.add("active");
         }
     }
 
     function checkAllPages() {
         let allPagesComplete = true;
+
         pages.forEach((page, index) => {
-            let inputs = page.querySelectorAll("input[required], select[required], textarea[required]");
+            const inputs = page.querySelectorAll("input[required], select[required], textarea[required]");
             let allFilled = true;
 
             inputs.forEach(input => {
                 if (input.type === "radio" || input.type === "checkbox") {
-                    let groupName = input.name;
-                    let groupInputs = page.querySelectorAll(`input[name='${groupName}']`);
-                    let oneChecked = Array.from(groupInputs).some(i => i.checked);
+                    const group = page.querySelectorAll(`input[name="${input.name}"]`);
+                    const oneChecked = Array.from(group).some(i => i.checked);
                     if (!oneChecked) allFilled = false;
                 } else {
-                    if (!input.value || input.value.trim() === "") {
-                        allFilled = false;
-                    }
+                    if (!input.value.trim()) allFilled = false;
                 }
             });
 
-            let checkbox = document.getElementById("checkbox" + (index + 1));
-            if (checkbox) {
-                checkbox.classList.toggle("checked", allFilled);
-            }
+            const checkbox = document.getElementById("checkbox" + (index + 1));
+            if (checkbox) checkbox.classList.toggle("checked", allFilled);
 
             if (!allFilled) allPagesComplete = false;
         });

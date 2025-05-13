@@ -1,4 +1,4 @@
 public class Connexion
 {
-    public const string connectionString = "Server=localhost;User ID=chris;Password=Chriskely@123;Database=Inscription";
+    public const string connectionString = "Server=192.168.204.219;User ID=Rova;Password=Rova2007#;Database=Inscription";
 }
