@@ -3,11 +3,13 @@ using MySqlConnector;
 public class Formulaire
 {
     public string id_attribut, attribut, type;
-    public Formulaire(string id_attribut, string attribut, string type)
+    public bool obligatoire;
+    public Formulaire(string id_attribut, string attribut, string type, bool obligatoire = true)
     {
         this.id_attribut = id_attribut;
         this.attribut = attribut;
         this.type = type;
+        this.obligatoire = obligatoire;
     }
     public static List<Formulaire> GetForms(string id_ecole)
     {
@@ -22,7 +24,7 @@ public class Formulaire
 
             while (reader.Read())
             {
-                formulaires.Add(new Formulaire(reader.GetString("NumAttribut"), reader.GetString("NomAttribut"), reader.GetString("TypeAttribut")));
+                formulaires.Add(new Formulaire(reader.GetString("NumAttribut"), reader.GetString("NomAttribut"), reader.GetString("TypeAttribut"), reader.GetBoolean("Obligatoire")));
             }
         }
         catch (Exception ex)

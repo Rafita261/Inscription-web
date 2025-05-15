@@ -6,7 +6,6 @@
     var lien = ecole + ".png";
     var formulaire = new List<Formulaire>();
     var parcours = new List<Parcours>();
-    var disabled = false;
 
     try
     {
@@ -16,7 +15,6 @@
     catch (Exception E)
     {
         Console.WriteLine(E);
-        disabled = true;
     }
 }
 
@@ -64,7 +62,7 @@
 <div style="display: flex;flex-direction: row;">
     <nav style="width: 15%; padding: 10px;">
         <img src="~/images/@lien" alt="@ecole" style="height: 80px;" /><br /><br />
-        @for (int i = 0; i < (int)(formulaire.Count + 4) / 3; i++)
+        @for (int i = 0; i <= (formulaire.Count + 4) / 3; i++)
         {
             <div class="progress-item" onclick="GoTo('page@((i + 1))')" id="progress@(i + 1)">
                 <div class="checkbox-fake" id="checkbox@(i + 1)">✓</div>
@@ -78,13 +76,17 @@
         <form method="post" id="formulaireInscription">
             <!-- Page 1 -->
             <div class="page" id="page1">
-                <label>Nom</label>
+                <label>Nom *</label>
                 <input type="text" name="nom" required placeholder="Nom de l'étudiant" /><br /><br />
                 <label>Prénoms</label>
-                <input type="text" name="prenom" required placeholder="Prénoms de l'étudiant" /><br /><br />
-                <label>Email</label>
+                <input type="text" name="prenom" placeholder="Prénoms de l'étudiant" /><br /><br />
+                <label>Email *</label>
                 <input type="email" name="email" required placeholder="Email" /><br /><br />
-                <label>Parcours</label>
+            </div>
+            
+            <!-- Page 2 -->
+            <div class="page" id="page2">
+                <label>Parcours *</label>
                 <select name="parcours" id="parcours" required>
                     <option disabled selected value="">Choisir un parcours</option>
                     @foreach (var p in parcours)
@@ -92,7 +94,7 @@
                         <option value="@p.id_parcours">@p.nom_parcours</option>
                     }
                 </select><br /><br />
-                <label>Niveau</label>
+                <label>Niveau *</label>
                 <select name="niveau" id="niveau" required>
                     <option disabled selected value="">Choisir un niveau</option>
                 </select><br /><br />
@@ -101,7 +103,7 @@
             <!-- Pages dynamiques -->
             @for (int i = 0; i < (int)(formulaire.Count) / 3; i++)
             {
-                var pageId = "page" + (2 + i).ToString();
+                var pageId = "page" + (3 + i).ToString();
                 <div class="page" id="@pageId" style="z-index:@(-i); background-color: #fff;">
                     @for (int k = 0; k < 3; k++)
                     {
@@ -109,6 +111,7 @@
                         if (index >= formulaire.Count) break;
                         var f = formulaire[index];
                         string attribut = f.attribut;
+                        if (f.obligatoire) attribut += " *";
                         string type = f.type;
 
                         if (type == "radio" || type == "checkbox")
@@ -119,7 +122,7 @@
                             <br />
                             @foreach (var ch in choix)
                             {
-                                <input type="@type" name="@attribut" value="@ch.id_choix" style="width:18px; height:18px;" required />
+                                <input type="@type" name="@attribut" value="@ch.id_choix" style="width:18px; height:18px;" required="@f.obligatoire" />
                                 @ch.valeur
                 
                                 <br />
@@ -129,7 +132,7 @@
                         else
                         {
                             <label>@attribut</label>
-                            <input type="@type" name="@attribut" placeholder="@attribut" required />
+                            <input type="@type" name="@attribut" placeholder="@attribut" required="@f.obligatoire" />
                             <br />
 
                             <br />

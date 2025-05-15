@@ -25,8 +25,17 @@ public class InscrireModel : PageModel
         var parcours = Request.Form["parcours"];
         var niveau = Request.Form["niveau"];
 
-        // Traitement ou sauvegarde
+        Etudiant etudiant = new Etudiant(nom, prenom, email);
+        string num = etudiant.IM;
+        try
+        {
+            etudiant.insert_to_database();
+        }
+        catch (Exception E)
+        {
+            Console.WriteLine("erreur : "+E);
+        }
 
-        return RedirectToPage("/Merci"); // ou autre page de confirmation
+        return RedirectToPage("/inscription"); // ou autre page de confirmation
     }
 }
