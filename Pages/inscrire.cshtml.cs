@@ -17,6 +17,7 @@ public class InscrireModel : PageModel
 
     public IActionResult OnPost()
     {
+        var message = "";
         // Traitement à l'envoi du formulaire
         // Exemple : Request.Form["nom"], etc.
         var nom = Request.Form["nom"];
@@ -37,6 +38,7 @@ public class InscrireModel : PageModel
         }
         catch (Exception E)
         {
+            message = "Erreur : "+ E;
             Console.WriteLine("erreur : " + E);
         }
 
@@ -45,23 +47,49 @@ public class InscrireModel : PageModel
         {
             if (form.type != "checkbox" && form.type != "radio")
             {
-                form.insert_value_to_database(etudiant.IM,Request.Form[form.id_attribut]);
+                try
+                {
+                    form.insert_value_to_database(etudiant.IM, Request.Form[form.id_attribut]);
+                }
+                catch (Exception E)
+                {
+                    message = "Erreur : " + E;
+                }
             }
             else if (form.type == "radio")
             {
-                var choix = new Valeur_Choix(Request.Form[form.id_attribut], etudiant.IM);
-                choix.insert_value_to_database();
+                try
+                {
+                    var choix = new Valeur_Choix(Request.Form[form.id_attribut], etudiant.IM);
+                    choix.insert_value_to_database();
+                }
+                catch (Exception E)
+                {
+                    message = "Erreur : " + E;
+                }
             }
             else
             {
                 foreach (var ch in Request.Form[form.attribut])
                 {
                     var choix = new Valeur_Choix(ch, etudiant.IM);
-                    choix.insert_value_to_database();
+                    try
+                    {
+                        choix.insert_value_to_database();
+                    }
+                    catch (Exception E)
+                    {
+                        message = "Erreur : " + E;
+                    }
                 }
             }
         }
+        if (message == "")
+        {
+            message = "Success : Inscription ajouté avec succèss";
+        }
 
-        return RedirectToPage("/inscription");
+        TempData["Message"] = message;
+        return RedirectToPage("/Merci");
     }
 }

@@ -36,6 +36,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvaW5zY3JpcmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/christalin/Bureau/L2-Projet-TD-TP/C\#/Inscription-web/Pages/merci.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvbWVyY2kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/christalin/Bureau/L2-Projet-TD-TP/C\#/Inscription-web/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

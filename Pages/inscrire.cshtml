@@ -57,7 +57,8 @@
         justify-content: space-between;
         margin-top: 20px;
     }
-    .upload-btn-wrapper{
+
+    .upload-btn-wrapper {
         display: inline;
         position: relative;
         cursor: pointer;
@@ -88,7 +89,7 @@
                 <label>Email <span style='color:red !important;'>*</span></label>
                 <input type="email" name="email" required placeholder="Email" /><br /><br />
             </div>
-            
+
             <!-- Page 2 -->
             <div class="page" id="page2">
                 <label>Parcours <span style='color:red!important;'>*</span></label>
@@ -110,7 +111,7 @@
             </div>
 
             <!-- Pages dynamiques -->
-            @for (int i = 0; i < (int)(formulaire.Count) / 3; i++)
+            @for (int i = 0; i <= (formulaire.Count) / 3; i++)
             {
                 var pageId = "page" + (3 + i).ToString();
                 <div class="page" id="@pageId" style="z-index:@(-i); background-color: #fff;">
@@ -121,19 +122,20 @@
                         var f = formulaire[index];
                         string attribut = f.attribut;
                         string type = f.type;
-                        string obli = f.obligatoire ? "*" : "" ; 
+                        string obli = f.obligatoire ? "*" : "";
 
                         if (type == "radio" || type == "checkbox")
                         {
                             var choix = Choix.GetChoix(f.id_attribut);
                             <label>@attribut <span style='color:red;!important'>@obli</span></label>
-                
+
                             <br />
                             @foreach (var ch in choix)
                             {
-                                <input type="@type" name="@f.id_attribut" value="@ch.id_choix" style="width:18px; height:18px;" required="@f.obligatoire" />
+                                <input type="@type" name="@f.id_attribut" value="@ch.id_choix" style="width:18px; height:18px;"
+                                    required="@f.obligatoire" />
                                 @ch.valeur
-                
+
                                 <br />
                             }
                             <br />
