@@ -2,13 +2,14 @@ using MySqlConnector;
 
 public class Etudiant
 {
-    public string IM, NomEtdiant, Prenoms, Email;
-    public Etudiant(string Nom, string Prenoms, string Email)
+    public string IM, NomEtdiant, Prenoms, Email, Photo;
+    public Etudiant(string Nom, string Prenoms, string Email, string Photo)
     {
         this.NomEtdiant = Nom;
         this.Prenoms = Prenoms;
         this.Email = Email;
         this.IM = Etudiant.GenerateIM();
+        this.Photo = Photo;
     }
     public static string GenerateIM()
     {

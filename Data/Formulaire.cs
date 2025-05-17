@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Microsoft.VisualBasic;
 using MySqlConnector;
 
@@ -52,5 +53,23 @@ public class Formulaire
             throw new Exception("Error while fetching data from database: " + ex.Message);
         }
         return annee;
+    }
+    public void insert_value_to_database(string IM, string value)
+    {
+        var type_colomun = this.type == "text" ? "ValeurText" : this.type == "number" ? "ValeurNumber" : "ValeurDate";
+        var valeur = this.type == "number" ? value : "\'" + value + "\'";
+        string sql = "INSERT INTO Valeur_Attribut(IM,NumAttribut," + type_colomun + ") VALUES('" + IM + "','" + this.id_attribut + "'," + valeur + ") ;";
+        try
+        {
+            using var connection = new MySqlConnection(Connexion.connectionString);
+            connection.Open();
+
+            using var command = new MySqlCommand(sql, connection);
+            using var reader = command.ExecuteReader();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error while fetching data from database: " + ex.Message);
+        }
     }
 }

@@ -57,6 +57,11 @@
         justify-content: space-between;
         margin-top: 20px;
     }
+    .upload-btn-wrapper{
+        display: inline;
+        position: relative;
+        cursor: pointer;
+    }
 </style>
 
 <div style="display: flex;flex-direction: row;">
@@ -98,6 +103,10 @@
                 <select name="niveau" id="niveau" required>
                     <option disabled selected value="">Choisir un niveau</option>
                 </select><br /><br />
+                <div class="upload-btn-wrapper">
+                    <label for="photo">Photo d'identité <span style='color:red;!important'>*</span> : </label>
+                    <input type="file" id="photos" name="photo" required>
+                </div>
             </div>
 
             <!-- Pages dynamiques -->
@@ -145,7 +154,7 @@
                 <button type="button" onclick="prevPage()" class="btn btn-secondary">Précédent</button>
                 <button type="button" onclick="nextPage()" class="btn btn-primary">Suivant</button>
             </div>
-
+            <input type="hidden" value="@ecole" name="ecole">
             <input type="submit" value="S'inscrire" id="submitBtn" disabled class="btn btn-success mt-4" />
         </form>
     </section>
