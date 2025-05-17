@@ -24,18 +24,19 @@ public class InscrireModel : PageModel
         var email = Request.Form["email"];
         var parcours = Request.Form["parcours"];
         var niveau = Request.Form["niveau"];
-
         Etudiant etudiant = new Etudiant(nom, prenom, email);
-        string num = etudiant.IM;
+        string code_niveau = new Niveau(parcours, niveau).GetCodeNiveau(); 
+        Inscription_Table inscription_ = new Inscription_Table(etudiant.IM, code_niveau);
         try
         {
             etudiant.insert_to_database();
+            inscription_.insert_to_database();
         }
         catch (Exception E)
         {
-            Console.WriteLine("erreur : "+E);
+            Console.WriteLine("erreur : " + E);
         }
 
-        return RedirectToPage("/inscription"); // ou autre page de confirmation
+        return RedirectToPage("/inscription");
     }
 }

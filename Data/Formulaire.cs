@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic;
 using MySqlConnector;
 
 public class Formulaire
@@ -32,5 +33,24 @@ public class Formulaire
             throw new Exception("Error while fetching data from database: " + ex.Message);
         }
         return formulaires;
+    }
+    public static DateOnly GetAnnee()
+    {
+        DateOnly annee;
+        try
+        {
+            using var connection = new MySqlConnection(Connexion.connectionString);
+            connection.Open();
+
+            using var command = new MySqlCommand("SELECT Annee FROM Annee_Univ WHERE YEAR(CURDATE()) = YEAR(Annee);", connection);
+            using var reader = command.ExecuteReader();
+            reader.Read();
+            annee = reader.GetDateOnly(0);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error while fetching data from database: " + ex.Message);
+        }
+        return annee;
     }
 }

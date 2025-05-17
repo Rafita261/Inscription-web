@@ -58,7 +58,7 @@ public class Etudiant
             using var connection = new MySqlConnection(Connexion.connectionString);
             connection.Open();
 
-            using var command = new MySqlCommand("INSERT INTO Etudiant(IM,NomEtudiant,Prenoms,Email) VALUES ('"+this.IM+"','"+this.NomEtdiant+"','"+this.Prenoms+"','"+this.Email+"')", connection);
+            using var command = new MySqlCommand("INSERT INTO Etudiant(IM,NomEtudiant,Prenoms,Email) VALUES ('" + this.IM + "','" + this.NomEtdiant + "','" + this.Prenoms + "','" + this.Email + "')", connection);
             using var reader = command.ExecuteReader();
         }
         catch (Exception ex)

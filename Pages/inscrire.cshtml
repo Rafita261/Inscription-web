@@ -76,17 +76,17 @@
         <form method="post" id="formulaireInscription">
             <!-- Page 1 -->
             <div class="page" id="page1">
-                <label>Nom *</label>
+                <label>Nom <span style='color: red !important;'>*</span></label>
                 <input type="text" name="nom" required placeholder="Nom de l'étudiant" /><br /><br />
                 <label>Prénoms</label>
                 <input type="text" name="prenom" placeholder="Prénoms de l'étudiant" /><br /><br />
-                <label>Email *</label>
+                <label>Email <span style='color:red !important;'>*</span></label>
                 <input type="email" name="email" required placeholder="Email" /><br /><br />
             </div>
             
             <!-- Page 2 -->
             <div class="page" id="page2">
-                <label>Parcours *</label>
+                <label>Parcours <span style='color:red!important;'>*</span></label>
                 <select name="parcours" id="parcours" required>
                     <option disabled selected value="">Choisir un parcours</option>
                     @foreach (var p in parcours)
@@ -94,7 +94,7 @@
                         <option value="@p.id_parcours">@p.nom_parcours</option>
                     }
                 </select><br /><br />
-                <label>Niveau *</label>
+                <label>Niveau <span style='color:red;!important'>*</span></label>
                 <select name="niveau" id="niveau" required>
                     <option disabled selected value="">Choisir un niveau</option>
                 </select><br /><br />
@@ -111,18 +111,18 @@
                         if (index >= formulaire.Count) break;
                         var f = formulaire[index];
                         string attribut = f.attribut;
-                        if (f.obligatoire) attribut += " *";
                         string type = f.type;
+                        string obli = f.obligatoire ? "*" : "" ; 
 
                         if (type == "radio" || type == "checkbox")
                         {
                             var choix = Choix.GetChoix(f.id_attribut);
-                            <label>@attribut</label>
+                            <label>@attribut <span style='color:red;!important'>@obli</span></label>
                 
                             <br />
                             @foreach (var ch in choix)
                             {
-                                <input type="@type" name="@attribut" value="@ch.id_choix" style="width:18px; height:18px;" required="@f.obligatoire" />
+                                <input type="@type" name="@f.id_attribut" value="@ch.id_choix" style="width:18px; height:18px;" required="@f.obligatoire" />
                                 @ch.valeur
                 
                                 <br />
@@ -131,8 +131,8 @@
                         }
                         else
                         {
-                            <label>@attribut</label>
-                            <input type="@type" name="@attribut" placeholder="@attribut" required="@f.obligatoire" />
+                            <label>@attribut <span style='color:red;!important'>@obli</span></label>
+                            <input type="@type" name="@f.id_attribut" placeholder="@attribut" required="@f.obligatoire" />
                             <br />
 
                             <br />
