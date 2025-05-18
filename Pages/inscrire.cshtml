@@ -153,8 +153,8 @@
             }
 
             <div class="nav-buttons">
-                <button type="button" onclick="prevPage()" class="btn btn-secondary">Précédent</button>
-                <button type="button" onclick="nextPage()" class="btn btn-primary">Suivant</button>
+                <button type="button" onclick="prevPage()" class="btn btn-secondary" id="prev-btn">Précédent</button>
+                <button type="button" onclick="nextPage()" class="btn btn-primary" id="next-btn">Suivant</button>
             </div>
             <input type="hidden" value="@ecole" name="ecole">
             <input type="submit" value="S'inscrire" id="submitBtn" disabled class="btn btn-success mt-4" />
@@ -165,6 +165,7 @@
 <script>
     let currentPageIndex = 0;
     let pages = [];
+    document.getElementById('prev-btn').hidden = true;
 
     document.addEventListener("DOMContentLoaded", function () {
         pages = Array.from(document.querySelectorAll(".page"));
@@ -211,6 +212,22 @@
             currentPageIndex++;
             pages[currentPageIndex].classList.add("active");
         }
+        handleBtn()
+    }
+
+    function handleBtn(){
+        if(currentPageIndex==pages.length - 1){
+            document.getElementById("next-btn").hidden = true;
+        }
+        else{
+            document.getElementById("next-btn").hidden = false;
+        }
+        if(currentPageIndex==0){
+           document.getElementById("prev-btn").hidden = true;
+        }
+        else{
+            document.getElementById("prev-btn").hidden = false;
+        }
     }
 
     function prevPage() {
@@ -219,6 +236,7 @@
             currentPageIndex--;
             pages[currentPageIndex].classList.add("active");
         }
+        handleBtn()
     }
 
     function checkAllPages() {
