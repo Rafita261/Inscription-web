@@ -68,7 +68,7 @@
 <div style="display: flex;flex-direction: row;">
     <nav style="width: 15%; padding: 10px;">
         <img src="~/images/@lien" alt="@ecole" style="height: 80px;" /><br /><br />
-        @for (int i = 0; i <= (formulaire.Count + 4) / 3; i++)
+        @for (int i = 0; i < Math.Ceiling((double)formulaire.Count / 3)+2; i++)
         {
             <div class="progress-item" onclick="GoTo('page@((i + 1))')" id="progress@(i + 1)">
                 <div class="checkbox-fake" id="checkbox@(i + 1)">✓</div>
@@ -111,7 +111,7 @@
             </div>
 
             <!-- Pages dynamiques -->
-            @for (int i = 0; i <= (formulaire.Count) / 3; i++)
+            @for (int i = 0; i < Math.Ceiling((double)(formulaire.Count) / 3); i++)
             {
                 var pageId = "page" + (3 + i).ToString();
                 <div class="page" id="@pageId" style="z-index:@(-i); background-color: #fff;">
