@@ -165,7 +165,7 @@
 <script>
     let currentPageIndex = 0;
     let pages = [];
-    document.getElementById('prev-btn').hidden = true;
+    document.getElementById('prev-btn').disabled = true;
 
     document.addEventListener("DOMContentLoaded", function () {
         pages = Array.from(document.querySelectorAll(".page"));
@@ -204,6 +204,7 @@
             target.classList.add("active");
             currentPageIndex = pages.indexOf(target);
         }
+        handleBtn();
     }
 
     function nextPage() {
@@ -217,16 +218,16 @@
 
     function handleBtn(){
         if(currentPageIndex==pages.length - 1){
-            document.getElementById("next-btn").hidden = true;
+            document.getElementById("next-btn").disabled = true;
         }
         else{
-            document.getElementById("next-btn").hidden = false;
+            document.getElementById("next-btn").disabled = false;
         }
         if(currentPageIndex==0){
-           document.getElementById("prev-btn").hidden = true;
+           document.getElementById("prev-btn").disabled = true;
         }
         else{
-            document.getElementById("prev-btn").hidden = false;
+            document.getElementById("prev-btn").disabled = false;
         }
     }
 
