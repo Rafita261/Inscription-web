@@ -56,7 +56,7 @@ public class Formulaire
     }
     public void insert_value_to_database(string IM, string value)
     {
-        var type_colomun = this.type == "text" ? "ValeurText" : this.type == "number" ? "ValeurNumber" : "ValeurDate";
+        var type_colomun = this.type == "date" ? "ValeurDate" : this.type == "number" ? "ValeurNumber" : "ValeurText";
         var valeur = this.type == "number" ? value : "\'" + value + "\'";
         string sql = "INSERT INTO Valeur_Attribut(IM,NumAttribut," + type_colomun + ") VALUES('" + IM + "','" + this.id_attribut + "'," + valeur + ") ;";
         try

@@ -23,7 +23,8 @@ public class InscrireModel : PageModel
         var nom = Request.Form["nom"];
         var prenom = Request.Form["prenom"];
         var email = Request.Form["email"];
-        var photo = Request.Form["photo"];
+        var photo = Path.Combine("/home/randriamiarimanana/Images", Request.Form["photo"]);
+        Console.WriteLine(photo);
         var parcours = Request.Form["parcours"];
         var niveau = Request.Form["niveau"];
         var ecole = Ecole.Get_Id(Request.Form["ecole"]);
