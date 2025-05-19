@@ -2,14 +2,32 @@ using MySqlConnector;
 
 public class Ecole
 {
-    public string id_ecole, nom_ecole;
+    public string id_ecole, nom_ecole, photo = "";
 
     public Ecole(string id, string nom)
     {
         id_ecole = id;
         nom_ecole = nom;
+        photo = Ecole.GetPhotoLink(id);
     }
 
+public static string GetPhotoLink(string id_ecole){
+        try
+        {
+            using var connection = new MySqlConnection(Connexion.connectionString);
+            connection.Open();
+
+            using var command = new MySqlCommand("SELECT Logo FROM Ecole WHERE CodeEcole = '" + id_ecole + "';", connection);
+            using var reader = command.ExecuteReader();
+
+            reader.Read();
+            return reader.GetString(0);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Erreur lors de la récupération de l'ID de l'école : " + ex);
+        }
+    }
     public static string Get_Id(string NomEcole)
     {
 

@@ -3,7 +3,7 @@
 @{
     var ecole = Request.Query["ecole"].ToString() != "" ? Request.Query["ecole"].ToString() : "ENI";
     ViewData["Title"] = ecole;
-    var lien = ecole + ".png";
+    var lien = new Ecole(Ecole.Get_Id(ecole), ecole).photo;
     var formulaire = new List<Formulaire>();
     var parcours = new List<Parcours>();
 
@@ -16,8 +16,14 @@
     {
         Console.WriteLine(E);
     }
+    Calendrier calendrier = new Calendrier(new Ecole(Ecole.Get_Id(ecole), ecole));
 }
 
+@if (calendrier.date_debut > DateOnly.FromDateTime(DateTime.Now) || calendrier.date_fin < DateOnly.FromDateTime(DateTime.Now)){
+    <h2>L' inscription à @ecole n'est pas disponible  </h2>
+    <a class="btn btn-primary" href="/">Retour à la page d'acceuil</a>
+}
+else{
 <style>
     .page {
         display: none;
@@ -266,3 +272,4 @@
         document.getElementById("submitBtn").disabled = !allPagesComplete;
     }
 </script>
+}

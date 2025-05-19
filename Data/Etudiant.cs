@@ -13,7 +13,7 @@ public class Etudiant
     }
     public static string GenerateIM()
     {
-        var last_number = "ETU000";
+        var last_number = "ET000";
         try
         {
             using var connection = new MySqlConnection(Connexion.connectionString);
@@ -31,7 +31,7 @@ public class Etudiant
             throw new Exception("Error while fetching data from database: " + ex.Message);
         }
         string num = "";
-        for (int i = 3; i < 6; i++)
+        for (int i = 2; i < 5; i++)
         {
             num = num + last_number[i];
         }
@@ -42,7 +42,7 @@ public class Etudiant
         }
         n++;
         string N = n.ToString();
-        string new_num = "ETU";
+        string new_num = "ET";
         int l = 3 - N.Length;
         for (int i = 0; i < l; i++)
         {

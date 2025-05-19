@@ -15,7 +15,7 @@ public class Inscription_Table
     }
     public void insert_to_database()
     {
-        string sql = "INSERT INTO Inscription(Annee, IM, CodeNiveau) VALUES ('"+this.Annee+"','" + this.IM + "','" + this.CodeNiveau + "')";
+        string sql = "INSERT INTO Inscription(Annee, IM, CodeNiveau, estValide) VALUES ('"+this.Annee+"','" + this.IM + "','" + this.CodeNiveau + "',0)";
         try
         {
             using var connection = new MySqlConnection(Connexion.connectionString);
