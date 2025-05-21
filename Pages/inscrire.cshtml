@@ -3,277 +3,291 @@
 @{
     var ecole = Request.Query["ecole"].ToString() != "" ? Request.Query["ecole"].ToString() : "ENI";
     ViewData["Title"] = ecole;
-    var lien = new Ecole(Ecole.Get_Id(ecole), ecole).photo;
     var formulaire = new List<Formulaire>();
     var parcours = new List<Parcours>();
+    var lien = "";
+    Calendrier calendrier = new Calendrier(DateOnly.FromDateTime(DateTime.Now), DateOnly.FromDateTime(DateTime.Now));
+    try{
+        lien = new Ecole(Ecole.Get_Id(ecole), ecole).photo;
+    }catch(Exception E){
+        formulaire = new List<Formulaire>();
+        parcours = new List<Parcours>();
+    }
 
     try
     {
         formulaire = Formulaire.GetForms(Ecole.Get_Id(ecole));
         parcours = new Ecole(Ecole.Get_Id(ecole), ecole).GetParcours();
+        calendrier = new Calendrier(new Ecole(Ecole.Get_Id(ecole), ecole));
     }
     catch (Exception E)
     {
         Console.WriteLine(E);
     }
-    Calendrier calendrier = new Calendrier(new Ecole(Ecole.Get_Id(ecole), ecole));
 }
 
-@if (calendrier.date_debut > DateOnly.FromDateTime(DateTime.Now)){
-    <h2>L' inscription à @ecole n'est pas encore disponible  </h2>
-    <a class="btn btn-primary" href="/">Retour à la page d'acceuil</a>
-}
-else if(calendrier.date_fin < DateOnly.FromDateTime(DateTime.Now)){
-    <h2>L' inscription à @ecole n'est plus disponible  </h2>
+@if(parcours.Count == 0)
+{
+    <h2>L' école @ecole n'existe pas ou aucun parcours n'est disponible, si vous pensez que c'est une erreur contacter l'admin </h2>
     <a class="btn btn-primary" href="/">Retour à la page d'acceuil</a>
 }
 else{
-<style>
-    .page {
-        display: none;
+    @if (calendrier.date_debut > DateOnly.FromDateTime(DateTime.Now)){
+        <h2>L' inscription à @ecole n'est pas encore disponible  </h2>
+        <a class="btn btn-primary" href="/">Retour à la page d'acceuil</a>
     }
-
-    .page.active {
-        display: block;
+    else if(calendrier.date_fin < DateOnly.FromDateTime(DateTime.Now)){
+        <h2>L' inscription à @ecole n'est plus disponible  </h2>
+        <a class="btn btn-primary" href="/">Retour à la page d'acceuil</a>
     }
-
-    .progress-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-        cursor: pointer;
-    }
-
-    .checkbox-fake {
-        width: 18px;
-        height: 18px;
-        margin-right: 8px;
-        border: 2px solid #007bff;
-        border-radius: 4px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: white;
-        color: white;
-    }
-
-    .checkbox-fake.checked {
-        background-color: #007bff;
-        color: white;
-    }
-
-    .nav-buttons {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
-    }
-
-    .upload-btn-wrapper {
-        display: inline;
-        position: relative;
-        cursor: pointer;
-    }
-</style>
-
-<div style="display: flex;flex-direction: row;">
-    <nav style="width: 15%; padding: 10px;">
-        <img src="~/images/@lien" alt="@ecole" style="height: 80px;" /><br /><br />
-        @for (int i = 0; i < Math.Ceiling((double)formulaire.Count / 3)+2; i++)
-        {
-            <div class="progress-item" onclick="GoTo('page@((i + 1))')" id="progress@(i + 1)">
-                <div class="checkbox-fake" id="checkbox@(i + 1)">✓</div>
-                Formulaire @(i + 1)
-            </div>
+    else{
+    <style>
+        .page {
+            display: none;
         }
-    </nav>
 
-    <section style="width: 85%; padding: 20px;">
-        <h2>Formulaire d'inscription de @ecole</h2>
-        <form method="post" id="formulaireInscription">
-            <!-- Page 1 -->
-            <div class="page" id="page1">
-                <label>Nom <span style='color: red !important;'>*</span></label>
-                <input type="text" name="nom" required placeholder="Nom de l'étudiant" /><br /><br />
-                <label>Prénoms</label>
-                <input type="text" name="prenom" placeholder="Prénoms de l'étudiant" /><br /><br />
-                <label>Email <span style='color:red !important;'>*</span></label>
-                <input type="email" name="email" required placeholder="Email" /><br /><br />
-            </div>
+        .page.active {
+            display: block;
+        }
 
-            <!-- Page 2 -->
-            <div class="page" id="page2">
-                <label>Parcours <span style='color:red!important;'>*</span></label>
-                <select name="parcours" id="parcours" required>
-                    <option disabled selected value="">Choisir un parcours</option>
-                    @foreach (var p in parcours)
-                    {
-                        <option value="@p.id_parcours">@p.nom_parcours</option>
-                    }
-                </select><br /><br />
-                <label>Niveau <span style='color:red;!important'>*</span></label>
-                <select name="niveau" id="niveau" required>
-                    <option disabled selected value="">Choisir un niveau</option>
-                </select><br /><br />
-                <div class="upload-btn-wrapper">
-                    <label for="photo">Photo d'identité <span style='color:red;!important'>*</span> : </label>
-                    <input type="file" id="photos" name="photo" required>
-                </div>
-            </div>
+        .progress-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
 
-            <!-- Pages dynamiques -->
-            @for (int i = 0; i < Math.Ceiling((double)(formulaire.Count) / 3); i++)
+        .checkbox-fake {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            border: 2px solid #007bff;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            color: white;
+        }
+
+        .checkbox-fake.checked {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .upload-btn-wrapper {
+            display: inline;
+            position: relative;
+            cursor: pointer;
+        }
+    </style>
+
+    <div style="display: flex;flex-direction: row;">
+        <nav style="width: 15%; padding: 10px;">
+            <img src="~/images/@lien" alt="@ecole" style="height: 80px;" /><br /><br />
+            @for (int i = 0; i < Math.Ceiling((double)formulaire.Count / 3)+2; i++)
             {
-                var pageId = "page" + (3 + i).ToString();
-                <div class="page" id="@pageId" style="z-index:@(-i); background-color: #fff;">
-                    @for (int k = 0; k < 3; k++)
-                    {
-                        int index = i * 3 + k;
-                        if (index >= formulaire.Count) break;
-                        var f = formulaire[index];
-                        string attribut = f.attribut;
-                        string type = f.type;
-                        string obli = f.obligatoire ? "*" : "";
+                <div class="progress-item" onclick="GoTo('page@((i + 1))')" id="progress@(i + 1)">
+                    <div class="checkbox-fake" id="checkbox@(i + 1)">✓</div>
+                    Formulaire @(i + 1)
+                </div>
+            }
+        </nav>
 
-                        if (type == "radio" || type == "checkbox")
+        <section style="width: 85%; padding: 20px;">
+            <h2>Formulaire d'inscription de @ecole</h2>
+            <form method="post" id="formulaireInscription">
+                <!-- Page 1 -->
+                <div class="page" id="page1">
+                    <label>Nom <span style='color: red !important;'>*</span></label>
+                    <input type="text" name="nom" required placeholder="Nom de l'étudiant" /><br /><br />
+                    <label>Prénoms</label>
+                    <input type="text" name="prenom" placeholder="Prénoms de l'étudiant" /><br /><br />
+                    <label>Email <span style='color:red !important;'>*</span></label>
+                    <input type="email" name="email" required placeholder="Email" /><br /><br />
+                </div>
+
+                <!-- Page 2 -->
+                <div class="page" id="page2">
+                    <label>Parcours <span style='color:red!important;'>*</span></label>
+                    <select name="parcours" id="parcours" required>
+                        <option disabled selected value="">Choisir un parcours</option>
+                        @foreach (var p in parcours)
                         {
-                            var choix = Choix.GetChoix(f.id_attribut);
-                            <label>@attribut <span style='color:red;!important'>@obli</span></label>
+                            <option value="@p.id_parcours">@p.nom_parcours</option>
+                        }
+                    </select><br /><br />
+                    <label>Niveau <span style='color:red;!important'>*</span></label>
+                    <select name="niveau" id="niveau" required>
+                        <option disabled selected value="">Choisir un niveau</option>
+                    </select><br /><br />
+                    <div class="upload-btn-wrapper">
+                        <label for="photo">Photo d'identité <span style='color:red;!important'>*</span> : </label>
+                        <input type="file" id="photos" name="photo" required>
+                    </div>
+                </div>
 
-                            <br />
-                            @foreach (var ch in choix)
+                <!-- Pages dynamiques -->
+                @for (int i = 0; i < Math.Ceiling((double)(formulaire.Count) / 3); i++)
+                {
+                    var pageId = "page" + (3 + i).ToString();
+                    <div class="page" id="@pageId" style="z-index:@(-i); background-color: #fff;">
+                        @for (int k = 0; k < 3; k++)
+                        {
+                            int index = i * 3 + k;
+                            if (index >= formulaire.Count) break;
+                            var f = formulaire[index];
+                            string attribut = f.attribut;
+                            string type = f.type;
+                            string obli = f.obligatoire ? "*" : "";
+
+                            if (type == "radio" || type == "checkbox")
                             {
-                                <input type="@type" name="@f.id_attribut" value="@ch.id_choix" style="width:18px; height:18px;"
-                                    required="@f.obligatoire" />
-                                @ch.valeur
+                                var choix = Choix.GetChoix(f.id_attribut);
+                                <label>@attribut <span style='color:red;!important'>@obli</span></label>
+
+                                <br />
+                                @foreach (var ch in choix)
+                                {
+                                    <input type="@type" name="@f.id_attribut" value="@ch.id_choix" style="width:18px; height:18px;"
+                                        required="@f.obligatoire" />
+                                    @ch.valeur
+
+                                    <br />
+                                }
+                                <br />
+                            }
+                            else
+                            {
+                                <label>@attribut <span style='color:red;!important'>@obli</span></label>
+                                <input type="@type" name="@f.id_attribut" placeholder="@attribut" required="@f.obligatoire" />
+                                <br />
 
                                 <br />
                             }
-                            <br />
                         }
-                        else
-                        {
-                            <label>@attribut <span style='color:red;!important'>@obli</span></label>
-                            <input type="@type" name="@f.id_attribut" placeholder="@attribut" required="@f.obligatoire" />
-                            <br />
-
-                            <br />
-                        }
-                    }
-                </div>
-            }
-
-            <div class="nav-buttons">
-                <button type="button" onclick="prevPage()" class="btn btn-secondary" id="prev-btn">Précédent</button>
-                <button type="button" onclick="nextPage()" class="btn btn-primary" id="next-btn">Suivant</button>
-            </div>
-            <input type="hidden" value="@ecole" name="ecole">
-            <input type="submit" value="S'inscrire" id="submitBtn" disabled class="btn btn-success mt-4" />
-        </form>
-    </section>
-</div>
-
-<script>
-    let currentPageIndex = 0;
-    let pages = [];
-    document.getElementById('prev-btn').disabled = true;
-
-    document.addEventListener("DOMContentLoaded", function () {
-        pages = Array.from(document.querySelectorAll(".page"));
-        if (pages.length > 0) pages[0].classList.add("active");
-
-        document.querySelectorAll("form input, form select, form textarea").forEach(el => {
-            el.addEventListener("input", checkAllPages);
-            el.addEventListener("change", checkAllPages);
-        });
-
-        document.getElementById("parcours").addEventListener("change", function () {
-            const selectedId = this.value;
-            fetch(`/inscrire?handler=Niveaux&idParcours=${selectedId}`)
-                .then(response => response.json())
-                .then(niveaux => {
-                    const niveauSelect = document.getElementById("niveau");
-                    niveauSelect.innerHTML = '<option disabled selected value="">Choisir un niveau</option>';
-                    niveaux.forEach(n => {
-                        console.log(n);
-                        const option = document.createElement("option");
-                        option.value = n;
-                        option.textContent = n;
-                        niveauSelect.appendChild(option);
-                    });
-                    checkAllPages();
-                });
-        });
-
-        checkAllPages();
-    });
-
-    function GoTo(pageId) {
-        pages.forEach(p => p.classList.remove("active"));
-        const target = document.getElementById(pageId);
-        if (target) {
-            target.classList.add("active");
-            currentPageIndex = pages.indexOf(target);
-        }
-        handleBtn();
-    }
-
-    function nextPage() {
-        if (currentPageIndex < pages.length - 1) {
-            pages[currentPageIndex].classList.remove("active");
-            currentPageIndex++;
-            pages[currentPageIndex].classList.add("active");
-        }
-        handleBtn()
-    }
-
-    function handleBtn(){
-        if(currentPageIndex==pages.length - 1){
-            document.getElementById("next-btn").disabled = true;
-        }
-        else{
-            document.getElementById("next-btn").disabled = false;
-        }
-        if(currentPageIndex==0){
-           document.getElementById("prev-btn").disabled = true;
-        }
-        else{
-            document.getElementById("prev-btn").disabled = false;
-        }
-    }
-
-    function prevPage() {
-        if (currentPageIndex > 0) {
-            pages[currentPageIndex].classList.remove("active");
-            currentPageIndex--;
-            pages[currentPageIndex].classList.add("active");
-        }
-        handleBtn()
-    }
-
-    function checkAllPages() {
-        let allPagesComplete = true;
-
-        pages.forEach((page, index) => {
-            const inputs = page.querySelectorAll("input[required], select[required], textarea[required]");
-            let allFilled = true;
-
-            inputs.forEach(input => {
-                if (input.type === "radio" || input.type === "checkbox") {
-                    const group = page.querySelectorAll(`input[name="${input.name}"]`);
-                    const oneChecked = Array.from(group).some(i => i.checked);
-                    if (!oneChecked) allFilled = false;
-                } else {
-                    if (!input.value.trim()) allFilled = false;
+                    </div>
                 }
+
+                <div class="nav-buttons">
+                    <button type="button" onclick="prevPage()" class="btn btn-secondary" id="prev-btn">Précédent</button>
+                    <button type="button" onclick="nextPage()" class="btn btn-primary" id="next-btn">Suivant</button>
+                </div>
+                <input type="hidden" value="@ecole" name="ecole">
+                <input type="submit" value="S'inscrire" id="submitBtn" disabled class="btn btn-success mt-4" />
+            </form>
+        </section>
+    </div>
+
+    <script>
+        let currentPageIndex = 0;
+        let pages = [];
+        document.getElementById('prev-btn').disabled = true;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            pages = Array.from(document.querySelectorAll(".page"));
+            if (pages.length > 0) pages[0].classList.add("active");
+
+            document.querySelectorAll("form input, form select, form textarea").forEach(el => {
+                el.addEventListener("input", checkAllPages);
+                el.addEventListener("change", checkAllPages);
             });
 
-            const checkbox = document.getElementById("checkbox" + (index + 1));
-            if (checkbox) checkbox.classList.toggle("checked", allFilled);
+            document.getElementById("parcours").addEventListener("change", function () {
+                const selectedId = this.value;
+                fetch(`/inscrire?handler=Niveaux&idParcours=${selectedId}`)
+                    .then(response => response.json())
+                    .then(niveaux => {
+                        const niveauSelect = document.getElementById("niveau");
+                        niveauSelect.innerHTML = '<option disabled selected value="">Choisir un niveau</option>';
+                        niveaux.forEach(n => {
+                            console.log(n);
+                            const option = document.createElement("option");
+                            option.value = n;
+                            option.textContent = n;
+                            niveauSelect.appendChild(option);
+                        });
+                        checkAllPages();
+                    });
+            });
 
-            if (!allFilled) allPagesComplete = false;
+            checkAllPages();
         });
 
-        document.getElementById("submitBtn").disabled = !allPagesComplete;
+        function GoTo(pageId) {
+            pages.forEach(p => p.classList.remove("active"));
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.add("active");
+                currentPageIndex = pages.indexOf(target);
+            }
+            handleBtn();
+        }
+
+        function nextPage() {
+            if (currentPageIndex < pages.length - 1) {
+                pages[currentPageIndex].classList.remove("active");
+                currentPageIndex++;
+                pages[currentPageIndex].classList.add("active");
+            }
+            handleBtn()
+        }
+
+        function handleBtn(){
+            if(currentPageIndex==pages.length - 1){
+                document.getElementById("next-btn").disabled = true;
+            }
+            else{
+                document.getElementById("next-btn").disabled = false;
+            }
+            if(currentPageIndex==0){
+            document.getElementById("prev-btn").disabled = true;
+            }
+            else{
+                document.getElementById("prev-btn").disabled = false;
+            }
+        }
+
+        function prevPage() {
+            if (currentPageIndex > 0) {
+                pages[currentPageIndex].classList.remove("active");
+                currentPageIndex--;
+                pages[currentPageIndex].classList.add("active");
+            }
+            handleBtn()
+        }
+
+        function checkAllPages() {
+            let allPagesComplete = true;
+
+            pages.forEach((page, index) => {
+                const inputs = page.querySelectorAll("input[required], select[required], textarea[required]");
+                let allFilled = true;
+
+                inputs.forEach(input => {
+                    if (input.type === "radio" || input.type === "checkbox") {
+                        const group = page.querySelectorAll(`input[name="${input.name}"]`);
+                        const oneChecked = Array.from(group).some(i => i.checked);
+                        if (!oneChecked) allFilled = false;
+                    } else {
+                        if (!input.value.trim()) allFilled = false;
+                    }
+                });
+
+                const checkbox = document.getElementById("checkbox" + (index + 1));
+                if (checkbox) checkbox.classList.toggle("checked", allFilled);
+
+                if (!allFilled) allPagesComplete = false;
+            });
+
+            document.getElementById("submitBtn").disabled = !allPagesComplete;
+        }
+    </script>
     }
-</script>
 }
