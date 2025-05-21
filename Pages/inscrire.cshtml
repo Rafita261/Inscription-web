@@ -19,8 +19,12 @@
     Calendrier calendrier = new Calendrier(new Ecole(Ecole.Get_Id(ecole), ecole));
 }
 
-@if (calendrier.date_debut > DateOnly.FromDateTime(DateTime.Now) || calendrier.date_fin < DateOnly.FromDateTime(DateTime.Now)){
-    <h2>L' inscription à @ecole n'est pas disponible  </h2>
+@if (calendrier.date_debut > DateOnly.FromDateTime(DateTime.Now)){
+    <h2>L' inscription à @ecole n'est pas encore disponible  </h2>
+    <a class="btn btn-primary" href="/">Retour à la page d'acceuil</a>
+}
+else if(calendrier.date_fin < DateOnly.FromDateTime(DateTime.Now)){
+    <h2>L' inscription à @ecole n'est plus disponible  </h2>
     <a class="btn btn-primary" href="/">Retour à la page d'acceuil</a>
 }
 else{

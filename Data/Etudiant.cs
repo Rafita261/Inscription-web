@@ -67,4 +67,28 @@ public class Etudiant
             throw new Exception("Error while fetching data from database: " + ex.Message);
         }
     }
+    public void delete_from_database()
+    {
+        try
+        {
+            using var connection = new MySqlConnection(Connexion.connectionString);
+            connection.Open();
+
+            var command = new MySqlCommand("DELETE FROM INSCRIPTION WHERE IM = '" + this.IM + "'", connection);
+            var reader = command.ExecuteReader();
+
+            command = new MySqlCommand("DELETE FROM Valeur_Choix WHERE IM = '" + this.IM + "'", connection);
+            reader = command.ExecuteReader();
+
+            command = new MySqlCommand("DELETE FROM Valeur_Attribut WHERE IM = '" + this.IM + "'", connection);
+            reader = command.ExecuteReader();
+
+            command = new MySqlCommand("DELETE FROM Etudiant WHERE IM = '" + this.IM + "'", connection);
+            reader = command.ExecuteReader();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error while fetching data from database: " + ex.Message);
+        }
+    }
 }

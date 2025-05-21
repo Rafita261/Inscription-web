@@ -6,7 +6,6 @@ public class InscrireModel : PageModel
 {
     public void OnGet()
     {
-        // Chargement effectué dans le fichier .cshtml
     }
 
     public JsonResult OnGetNiveaux(string idParcours)
@@ -18,8 +17,6 @@ public class InscrireModel : PageModel
     public IActionResult OnPost()
     {
         var message = "";
-        // Traitement à l'envoi du formulaire
-        // Exemple : Request.Form["nom"], etc.
         var nom = Request.Form["nom"];
         var prenom = Request.Form["prenom"];
         var email = Request.Form["email"];
@@ -39,8 +36,8 @@ public class InscrireModel : PageModel
         }
         catch (Exception E)
         {
-            message = "Erreur : "+ E;
-            Console.WriteLine("erreur : " + E);
+            message = "Erreur lors de l' inscription, veuillez contacter l'administrateur du site web";
+            Console.WriteLine("Erreur : " + E);
         }
 
         List<Formulaire> forms = Formulaire.GetForms(ecole);
@@ -54,7 +51,7 @@ public class InscrireModel : PageModel
                 }
                 catch (Exception E)
                 {
-                    message = "Erreur : " + E;
+                    message = "Erreur lors de l' inscription, veuillez contacter l'administrateur du site web";
                 }
             }
             else if (form.type == "radio")
@@ -80,7 +77,7 @@ public class InscrireModel : PageModel
                     }
                     catch (Exception E)
                     {
-                        message = "Erreur : " + E;
+                        message = "Erreur Erreur lors de l' inscription, veuillez contacter l'administrateur du site web";
                     }
                 }
             }
@@ -88,6 +85,17 @@ public class InscrireModel : PageModel
         if (message == "")
         {
             message = "Success : Inscription ajouté avec succèss";
+        }
+        else
+        {
+            try
+            {
+                etudiant.delete_from_database();
+            }
+            catch (Exception E)
+            {
+                message = "Erreur côté serveur : Veuillez contacter l'administrateur du site";
+            }
         }
 
         TempData["Message"] = message;
